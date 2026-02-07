@@ -4,6 +4,11 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
+        stage('Clean up Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
